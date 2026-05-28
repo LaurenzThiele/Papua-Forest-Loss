@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+
+# IDEs
+.vscode/
+.idea/
+.venv/
+
+# raw data (keep only sources.txt)
+raw_data/*
+!raw_data/
+!raw_data/donwload_mining_concessions.py
+!raw_data/sources.txt
+
+# processed data 
+processed/rasters/*
+!processed/rasters
+!processed/rasters/.gitkeep
+
+processed/stats/*
+!processed/stats
+!processed/stats/.gitkeep
+
+processed/vectors/*
+!processed/vectors
+!processed/vectors/.gitkeep

@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest-deep: #0b1e12;
+  --color-forest-mid: #163320;
+  --color-forest-light: #2d6a3f;
+  --color-forest-accent: #3d8b52;
+  --color-loss-peak: #c0392b;
+  --color-loss-mid: #e67e22;
+  --color-loss-light: #f39c12;
+  --color-gain: #27ae60;
+  --color-outside: #6b7280;
+  --color-palm: #d4ac0d;
+  --color-wood: #884ea0;
+  --color-mining: #a04000;
+  --color-cream: #f5f0e8;
+  --color-cream-dark: #ede6d6;
+  --color-ink: #1a1a1a;
+  --color-ink-muted: #4a4a4a;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-data: 'Inter Tight', 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.1;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-data {
+    font-family: var(--font-data);
+  }
+
+  .section-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-pad {
+    padding-top: clamp(5rem, 10vw, 9rem);
+    padding-bottom: clamp(5rem, 10vw, 9rem);
+  }
+
+  .chart-label {
+    font-family: var(--font-data);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    font-family: var(--font-data);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  .pull-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    line-height: 1.4;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+  }
+
+  .maplibregl-map {
+    border-radius: 0.5rem;
+  }
+}

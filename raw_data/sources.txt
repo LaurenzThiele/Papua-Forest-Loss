@@ -1,0 +1,34 @@
+https://storage.googleapis.com/earthenginepartners-hansen/GFC-2025-v1.13/download.html
+    Hansen_GFC-2025-v1.13_gain_00N_120E.tif
+    Hansen_GFC-2025-v1.13_gain_00N_130E.tif
+    Hansen_GFC-2025-v1.13_gain_00N_140E.tif
+    Hansen_GFC-2025-v1.13_gain_10N_130E.tif
+    Hansen_GFC-2025-v1.13_lossyear_00N_120E.tif
+    Hansen_GFC-2025-v1.13_lossyear_00N_130E.tif
+    Hansen_GFC-2025-v1.13_lossyear_00N_140E.tif
+    Hansen_GFC-2025-v1.13_lossyear_10N_130E.tif
+    Hansen_GFC-2025-v1.13_treecover2000_00N_120E.tif
+    Hansen_GFC-2025-v1.13_treecover2000_00N_130E.tif
+    Hansen_GFC-2025-v1.13_treecover2000_00N_140E.tif
+    Hansen_GFC-2025-v1.13_treecover2000_10N_130E.tif
+
+https://geoportal.esdm.go.id/minerba/
+    Papua_mining_concession.json
+
+https://data.globalforestwatch.org/datasets/f82b539b9b2f495e853670ddc3f0ce68_2/explore
+    Indonesia_oil_palm_concessions.geojson
+
+https://data.globalforestwatch.org/datasets/05c3a7ee17df4f69bf3c4f974a8bece9_0/explore
+    Indonesia_wood_fiber_concessions.geojson
+
+https://www.protectedplanet.net/country/IDN
+    WDPA_WDOECM_May2026_Public_IDN_shp_0/
+    WDPA_WDOECM_May2026_Public_IDN_shp_1/
+    WDPA_WDOECM_May2026_Public_IDN_shp_2/
+
+https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH
+    Province.csv
+    Regency_City.csv
+
+donwload_mining_concessions.py
+    Papua_mining_concessions.json
