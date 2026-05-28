@@ -7,7 +7,7 @@ import SectionLabel from '../components/SectionLabel.jsx'
 import Sparkline from '../components/Sparkline.jsx'
 import imgTribesmen from '../assets/tribesmen.png'
 import imgHut from '../assets/hut.png'
-import regencyData from '../data/annual_loss_regency.json'
+import regencyJson from '../data/annual_loss_regency.json'
 
 const LAYER_COLORS = {
   palm: '#3b82f6',
@@ -213,7 +213,7 @@ export default function HumanSection() {
   useEffect(() => {
     if (!shouldInitMap) return
     const lookup = {}
-    regencyData.forEach(r => { lookup[r.id] = r })
+    regencyJson.forEach(r => { lookup[r.id] = r })
     setRegencyData(lookup)
   }, [shouldInitMap])
 
@@ -525,10 +525,10 @@ export default function HumanSection() {
                     position: 'absolute', top: '1rem', left: '1rem', zIndex: 60,
                     background: 'rgba(11,30,18,0.92)',
                     border: '1px solid rgba(61,139,82,0.3)',
-                    borderRadius: 6, padding: '0.3rem 0.7rem',
+                    borderRadius: 6, padding: isMobile ? '0.3rem 0.7rem' : '0.45rem 1rem',
                     cursor: 'pointer',
                     fontFamily: "'Inter Tight', sans-serif",
-                    fontSize: '0.62rem', fontWeight: 600,
+                    fontSize: isMobile ? '0.62rem' : '0.78rem', fontWeight: 600,
                     color: '#3d8b52', letterSpacing: '0.05em',
                     backdropFilter: 'blur(8px)',
                     display: 'flex', alignItems: 'center', gap: '0.35rem',
@@ -552,12 +552,12 @@ export default function HumanSection() {
                 transition: 'right 0.3s ease',
                 background: 'rgba(11,30,18,0.82)',
                 border: '1px solid rgba(255,255,255,0.07)',
-                borderRadius: 6, padding: '0.4rem 0.85rem',
+                borderRadius: 6, padding: isMobile ? '0.4rem 0.85rem' : '0.55rem 1.1rem',
                 backdropFilter: 'blur(8px)',
                 display: 'flex', alignItems: 'center',
               }}
             >
-              <span style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: '0.62rem', color: 'rgba(245,240,232,0.42)', letterSpacing: '0.04em', lineHeight: 1 }}>
+              <span style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: isMobile ? '0.62rem' : '0.8rem', color: 'rgba(245,240,232,0.42)', letterSpacing: '0.04em', lineHeight: 1 }}>
                 {viewMode === 'province'
                   ? (isMobile ? 'Tap a province' : 'Click a province to explore regencies')
                   : `${PROVINCE_LOSS[activeProvince]?.name}: ${isMobile ? 'tap' : 'click'} a regency`}
@@ -570,18 +570,18 @@ export default function HumanSection() {
                 position: 'absolute', bottom: '1rem', left: '1rem', zIndex: 1,
                 background: 'rgba(11,30,18,0.88)',
                 border: '1px solid rgba(61,139,82,0.15)',
-                borderRadius: 6, padding: '0.75rem 1rem',
+                borderRadius: 6, padding: isMobile ? '0.75rem 1rem' : '0.9rem 1.2rem',
                 backdropFilter: 'blur(8px)',
               }}
             >
-              <div style={{ fontSize: '0.57rem', color: 'rgba(245,240,232,0.38)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.45rem' }}>
+              <div style={{ fontSize: isMobile ? '0.57rem' : '0.72rem', color: 'rgba(245,240,232,0.38)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: isMobile ? '0.45rem' : '0.55rem' }}>
                 Forest loss
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '0.45rem' : '0.65rem' }}>
                 {[['#1e4023', 'Low'], ['#7a5219', 'Moderate'], ['#c0392b', 'High'], ['#8b1509', 'Severe']].map(([c, l]) => (
                   <div key={l} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
-                    <div style={{ width: 18, height: 9, background: c, borderRadius: 2 }} />
-                    <div style={{ fontSize: '0.5rem', color: 'rgba(245,240,232,0.32)' }}>{l}</div>
+                    <div style={{ width: isMobile ? 18 : 24, height: isMobile ? 9 : 12, background: c, borderRadius: 2 }} />
+                    <div style={{ fontSize: isMobile ? '0.5rem' : '0.65rem', color: 'rgba(245,240,232,0.32)' }}>{l}</div>
                   </div>
                 ))}
               </div>
