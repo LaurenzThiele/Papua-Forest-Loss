@@ -6,7 +6,7 @@ A data journalism piece on 25 years of forest cover change across the six provin
 
 ## Data
 
-Forest loss data is derived from the Hansen et al. Global Forest Watch annual tree cover loss product. Vector boundaries and concession layers are sourced from Global Forest Watch and Indonesian government datasets. All processed data lives in `public/data/`.
+Forest loss data is derived from the Hansen et al. Global Forest Watch annual tree cover loss product. Vector boundaries and concession layers are sourced from Global Forest Watch and Indonesian government datasets. All processed data lives in `papua-forest-loss/public/data` and `papua-forest-loss/src/data`.
 
 ## Stack
 
