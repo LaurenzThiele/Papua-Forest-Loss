@@ -262,6 +262,7 @@ export default function ClosingSection({ summary }) {
                   <li>Driver attribution: intersection with Global Forest Watch palm oil, wood fiber, mining concession layers</li>
                   <li>Protected areas: WDPA terrestrial polygons, IUCN categories I to VI</li>
                   <li>2025 data flagged throughout as preliminary, subject to revision as full-year imagery becomes available</li>
+                  <li>Administrative boundaries: Papua underwent multiple provincial splits and regency changes over the study period; for simplicity, analysis uses the latest available boundaries throughout</li>
                 </ul>
               </div>
               <div>

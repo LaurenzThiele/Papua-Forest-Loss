@@ -16,6 +16,21 @@ const LAYER_COLORS = {
   protected: '#f472b6',
 }
 
+const STUDY_BOUNDS = [[129, -10], [142, 1]]
+const SMALL_SCREEN_INTERACTIVE = 480
+
+const BASEMAP_STYLE = {
+  version: 8,
+  sources: {
+    world: { type: 'vector', url: 'https://demotiles.maplibre.org/tiles/tiles.json' }
+  },
+  layers: [
+    { id: 'bg', type: 'background', paint: { 'background-color': '#090e0b' } },
+    { id: 'land', type: 'fill', source: 'world', 'source-layer': 'countries', paint: { 'fill-color': '#131d15' } },
+    { id: 'borders', type: 'line', source: 'world', 'source-layer': 'countries', paint: { 'line-color': 'rgba(61,139,82,0.2)', 'line-width': 0.7 } },
+  ]
+}
+
 const PROVINCE_LOSS = {
   91: { name: 'Papua', total: 212833, pct: 15.5, annual: [4080,5812,3131,5188,5150,6122,6611,6026,8404,12244,11906,18063,9688,10471,8676,10333,8455,8395,10155,11114,9364,11385,7854,7076,7132] },
   92: { name: 'Papua Barat', total: 258724, pct: 18.8, annual: [4943,9066,5955,11423,5389,7585,4247,4502,7647,8855,6489,9941,5676,11672,23250,20267,11630,16858,15543,14670,12454,11827,11741,8850,8245] },
@@ -187,6 +202,8 @@ export default function HumanSection() {
   const [selectedRegency, setSelectedRegency] = useState(null)
   const [regencyData, setRegencyData] = useState(null)
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 640)
+  const viewModeRef = useRef('province')
+  useEffect(() => { viewModeRef.current = viewMode }, [viewMode])
 
   // Track mobile breakpoint
   useEffect(() => {
@@ -194,6 +211,26 @@ export default function HumanSection() {
     window.addEventListener('resize', handler, { passive: true })
     return () => window.removeEventListener('resize', handler)
   }, [])
+
+  // On resize: toggle map interactivity and refit study area in province view
+  useEffect(() => {
+    const handler = () => {
+      const map = mapInstance.current
+      if (!map || !mapLoaded) return
+      if (window.innerWidth < SMALL_SCREEN_INTERACTIVE) {
+        map.dragPan.enable()
+        map.touchZoomRotate.enable()
+      } else {
+        map.dragPan.disable()
+        map.touchZoomRotate.disable()
+        if (viewModeRef.current === 'province') {
+          map.fitBounds(STUDY_BOUNDS, { padding: 24, duration: 400 })
+        }
+      }
+    }
+    window.addEventListener('resize', handler, { passive: true })
+    return () => window.removeEventListener('resize', handler)
+  }, [mapLoaded])
 
   // Lazy-init map: only when section is 200px from viewport
   useEffect(() => {
@@ -220,18 +257,20 @@ export default function HumanSection() {
   useEffect(() => {
     if (!shouldInitMap || mapInstance.current) return
 
+    const interactable = window.innerWidth < SMALL_SCREEN_INTERACTIVE
     const map = new maplibregl.Map({
       container: mapRef.current,
-      style: 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json',
-      center: [136.5, -4.5],
-      zoom: isMobile ? 4.5 : 5.2,
+      style: BASEMAP_STYLE,
+      bounds: STUDY_BOUNDS,
+      fitBoundsOptions: { padding: 24, maxZoom: 7 },
       minZoom: 4,
       maxZoom: 12,
+      maxBounds: [[118, -15], [148, 6]],
       attributionControl: false,
       scrollZoom: false,
-      dragPan: true,
+      dragPan: interactable,
       dragRotate: false,
-      touchZoomRotate: true,
+      touchZoomRotate: interactable,
       touchPitch: false,
       doubleClickZoom: false,
       keyboard: false,
@@ -324,8 +363,17 @@ export default function HumanSection() {
         try { map.setFeatureState({ source: 'regencies', id }, { loss: rd.total_loss_ha || 0 }) } catch {}
       })
     }
-    if (map.isSourceLoaded('regencies')) apply()
-    else map.once('sourcedata', apply)
+    if (map.isSourceLoaded('regencies')) {
+      apply()
+    } else {
+      const onSourceData = () => {
+        if (map.isSourceLoaded('regencies')) {
+          map.off('sourcedata', onSourceData)
+          apply()
+        }
+      }
+      map.on('sourcedata', onSourceData)
+    }
   }, [mapLoaded, regencyData])
 
   useEffect(() => {
@@ -454,8 +502,7 @@ export default function HumanSection() {
     map.setLayoutProperty('regencies-fill', 'visibility', 'none')
     map.setLayoutProperty('regencies-stroke', 'visibility', 'none')
     map.setLayoutProperty('regencies-selected', 'visibility', 'none')
-    const zoom = window.innerWidth < 640 ? 4.5 : 5.2
-    map.flyTo({ center: [136.5, -4.5], zoom, duration: 900 })
+    map.fitBounds(STUDY_BOUNDS, { padding: 24, maxZoom: 7, duration: 900 })
   }, [])
 
   const toggleLayer = useCallback((key) => {
