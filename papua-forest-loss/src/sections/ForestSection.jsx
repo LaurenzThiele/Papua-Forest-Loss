@@ -213,10 +213,10 @@ export default function ForestSection() {
               </div>
               <div className="md:col-span-2 md:border-l-2 md:border-forest-light/20 md:pl-6">
                 <p className="font-body text-ink-muted text-sm leading-relaxed mb-2">
-                  Papua represents a small fraction of Indonesia's total land area yet holds half the country's
-                  entire archipelago-wide biodiversity. More than{' '}
-                  <strong className="text-ink">70% of fauna and flora are endemic</strong> —
-                  found nowhere else on Earth.
+                Papua represents a small fraction of Indonesia's total land area yet holds half the country's
+                entire archipelago-wide biodiversity. More than{' '}
+                <strong className="text-ink">70% of fauna and flora are endemic</strong>, meaning they are
+                found nowhere else on Earth.
                 </p>
                 <p className="font-data text-[0.65rem] text-ink/30">
                   Margono et al. (2014). Nature Climate Change.

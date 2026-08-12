@@ -668,45 +668,55 @@ export default function HumanSection() {
         </ScrollReveal>
 
         {/* Indigenous context */}
-        <div className="grid md:grid-cols-2 gap-8">
-          <ScrollReveal delay={0.1}>
-            <div className="flex gap-4">
-              <img src={imgTribesmen} alt="Indigenous communities of Papua" className="w-24 h-24 object-contain opacity-70 shrink-0" loading="lazy" />
-              <div>
-                <div className="eyebrow text-forest-light mb-2">Indigenous land tenure</div>
-                <p className="text-ink-muted text-sm leading-relaxed">
-                  Communities including Marind, Yei Nan, Muyu, and Awyu have
-                  maintained oral and practical ecological knowledge of these
-                  forest systems over generations: plant phenology, seasonal
-                  water patterns, land-use practices adapted to peatland systems.
-                  This knowledge is not captured in remote sensing datasets.
-                </p>
-                <p className="font-data text-[0.65rem] text-ink/30 mt-2">
-                  Garnett et al. (2018). Nature Sustainability.
-                </p>
-              </div>
+       <div className="grid lg:grid-cols-2 gap-8">
+        <ScrollReveal delay={0.1}>
+          <div className="flex gap-4 items-stretch">
+            <img
+              src={imgTribesmen}
+              alt="Indigenous communities of Papua"
+              className="w-[30%] max-w-[192px] h-auto object-cover opacity-70 shrink-0"
+              loading="lazy"
+            />
+            <div>
+              <div className="eyebrow text-forest-light mb-2">Indigenous land tenure</div>
+              <p className="text-ink-muted text-sm leading-relaxed">
+                Communities including Marind, Yei Nan, Muyu, and Awyu have
+                maintained oral and practical ecological knowledge of these
+                forest systems over generations: plant phenology, seasonal
+                water patterns, land-use practices adapted to peatland systems.
+                This knowledge is not captured in remote sensing datasets.
+              </p>
+              <p className="font-data text-[0.65rem] text-ink/30 mt-2">
+                Garnett et al. (2018). Nature Sustainability.
+              </p>
             </div>
-          </ScrollReveal>
+          </div>
+        </ScrollReveal>
 
-          <ScrollReveal delay={0.15}>
-            <div className="flex gap-4">
-              <img src={imgHut} alt="Traditional settlement" className="w-24 h-24 object-contain opacity-70 shrink-0" loading="lazy" />
-              <div>
-                <div className="eyebrow text-forest-light mb-2">Spatial distribution</div>
-                <p className="text-ink-muted text-sm leading-relaxed">
-                  The 83.4% of loss recorded outside mapped concessions does not
-                  mean outside all human influence. It reflects migrants following
-                  road corridors, communities displaced from primary territories,
-                  and informal agricultural expansion. These are patterns that
-                  research on highway-induced deforestation in Papua has documented.
-                </p>
-                <p className="font-data text-[0.65rem] text-ink/30 mt-2">
-                  ANU Crawford School (2023); Gaveau et al. (2021).
-                </p>
-              </div>
+        <ScrollReveal delay={0.15}>
+          <div className="flex gap-4 items-stretch">
+            <img
+              src={imgHut}
+              alt="Traditional settlement"
+              className="w-[30%] max-w-[192px] h-auto object-cover opacity-70 shrink-0"
+              loading="lazy"
+            />
+            <div>
+              <div className="eyebrow text-forest-light mb-2">Spatial distribution</div>
+              <p className="text-ink-muted text-sm leading-relaxed">
+                The 83.4% of loss recorded outside mapped concessions does not
+                mean outside all human influence. It reflects migrants following
+                road corridors, communities displaced from primary territories,
+                and informal agricultural expansion. These are patterns that
+                research on highway-induced deforestation in Papua has documented.
+              </p>
+              <p className="font-data text-[0.65rem] text-ink/30 mt-2">
+                ANU Crawford School (2023); Gaveau et al. (2021).
+              </p>
             </div>
-          </ScrollReveal>
-        </div>
+          </div>
+        </ScrollReveal>
+      </div>
       </div>
     </section>
   )
